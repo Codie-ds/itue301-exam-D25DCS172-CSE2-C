@@ -1,0 +1,104 @@
+.doctor-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  cursor: pointer;
+  border: 1px solid rgba(0,0,0,0.03);
+}
+
+.doctor-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+}
+
+.doctor-image-wrapper {
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+  background-color: var(--surface-light);
+}
+
+.doctor-image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--surface-light) 0%, #d8ded5 100%);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.placeholder-content {
+  font-size: 3rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: -0.05em;
+}
+
+.doctor-card:hover .doctor-image-placeholder {
+  transform: scale(1.05);
+}
+
+.doctor-info {
+  padding: 2rem;
+  position: relative;
+}
+
+.doctor-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.doctor-index {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.doctor-availability {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+}
+
+.doctor-availability.available {
+  color: var(--med-green);
+}
+
+.doctor-availability.unavailable {
+  color: var(--text-muted);
+}
+
+.doctor-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: var(--text-primary);
+}
+
+.doctor-specialization {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.doctor-arrow {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  color: var(--text-primary);
+  opacity: 0.3;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.doctor-card:hover .doctor-arrow {
+  opacity: 1;
+  transform: translateX(5px);
+}
