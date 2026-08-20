@@ -14,20 +14,14 @@ const DoctorsPage = () => {
     const fetchDoctors = async () => {
       try {
         setLoading(true);
-        // Simulate API call delay to show beautiful loading state
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        // Fetch from Express API
+        const response = await fetch('http://localhost:8000/api/v1/doctors');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
         
-        // Mock data that would normally come from API
-        const mockData = [
-          { id: 1, name: "DR. RAHUL SHAH", specialization: "CARDIOLOGIST", availability: true },
-          { id: 2, name: "DR. ANITA DESAI", specialization: "NEUROLOGIST", availability: true },
-          { id: 3, name: "DR. SAMIR PATEL", specialization: "ORTHOPEDIC", availability: false },
-          { id: 4, name: "DR. PRIYA SHARMA", specialization: "PEDIATRICIAN", availability: true },
-          { id: 5, name: "DR. KUNAL VERMA", specialization: "DERMATOLOGIST", availability: true },
-          { id: 6, name: "DR. SNEHA RAO", specialization: "PSYCHIATRIST", availability: false }
-        ];
-        
-        setDoctors(mockData);
+        const json = await response.json();
+        setDoctors(json.data);
         setError(null);
       } catch (err) {
         setError("Failed to fetch doctors. Please try again later.");
